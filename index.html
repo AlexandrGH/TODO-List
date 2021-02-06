@@ -1,0 +1,60 @@
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+	<head>
+		<!-- Заголовок страницы в браузере -->
+		<title>Vue</title>
+		<!-- Подключаем CSS -->
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- Кодировка страницы -->
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	</head>
+	<!-- Отображаемое тело страницы -->
+	<body>
+		<div id="app" class="container" v-cloak>
+			<div class="header">
+				<div class="header__logo">TODO</div>
+				<div class="header__input">
+					<input type="text" name="" id=""
+						v-bind:value="inputValue"
+						v-on:input="getInput"
+						v-on:keypress.enter="addNewTask">
+				</div>
+				<button class="header__btn btn"
+					v-on:click="addNewTask">Добавить</button>
+			</div>
+			<div class="todo">
+				<ul class="todo__list">
+					<div class="todo__title">Текущие задачи {{taskList.length}}:</div>					
+					<li class="todo__task" v-for="(item, index) in taskList" :key="index">
+						<button class="todo__check"
+							v-on:click="moveTask(index, 'todo')"></button>
+						<!-- <input type="checkbox" name="" id=""
+							v-on:change="moveTask(index, 'todo')"> -->
+						<div class="todo__text">{{item}}</div>						
+						<button class="remove"
+							v-on:click="deleteTask(index, 'todo')">Delete</button>
+					</li>
+				</ul>
+			</div>
+			<div class="todo">
+				<ul class="todo__list">
+					<div class="todo__title">Выполненные задачи {{completedTaskList.length}}:</div>					
+					<li class="todo__task" v-for="(item, index) in completedTaskList" :key="index">
+						<button class="todo__checked"
+							v-on:click="moveTask(index, 'done')"></button>
+						<!-- <input type="checkbox" name="" id="" checked
+							v-on:change="moveTask(index, 'done')"> -->
+						<div class="todo__text todo__completed">{{item}}</div>						
+						<button class="remove"
+							v-on:click="deleteTask(index, 'done')">Delete</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="https://unpkg.com/vue@next"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
