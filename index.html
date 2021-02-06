@@ -5,7 +5,7 @@
 	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
 	<head>
 		<!-- Заголовок страницы в браузере -->
-		<title>Vue</title>
+		<title>TODO List</title>
 		<!-- Подключаем CSS -->
 		<link rel="stylesheet" href="css/style.css" />
 		<!-- Кодировка страницы -->
@@ -27,7 +27,9 @@
 			</div>
 			<div class="todo">
 				<ul class="todo__list">
-					<div class="todo__title">Текущие задачи {{taskList.length}}:</div>					
+					<div class="todo__title" 
+						v-if="taskList.length>0">Текущие задачи {{taskList.length}}:</div>	
+						<div class="" v-else>Дел пока нет, но вы можете добавить новое</div>				
 					<li class="todo__task" v-for="(item, index) in taskList" :key="index">
 						<button class="todo__check"
 							v-on:click="moveTask(index, 'todo')"></button>

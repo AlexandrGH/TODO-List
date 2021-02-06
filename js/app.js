@@ -3,7 +3,7 @@ const App = {
         return {
             inputValue:'',
             taskList:['Задача 1'],
-            completedTaskList:[],
+            completedTaskList:['Открыть список дел'],
         };
     },
     methods: {
